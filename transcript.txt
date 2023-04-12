@@ -1,0 +1,193 @@
+(base) kartik@Kartiks-MacBook-Pro adder % make test/neg.run
+cargo run -- test/neg.snek test/neg.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/neg.snek test/neg.s`
+nasm -f macho64 test/neg.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/neg.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/neg.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 3
+neg rax
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/neg.run
+-3
+
+
+(base) kartik@Kartiks-MacBook-Pro adder % make test/neg1.run
+cargo run -- test/neg1.snek test/neg1.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/adder test/neg1.snek test/neg1.s`
+nasm -f macho64 test/neg1.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/neg1.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/neg1.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 73
+add rax, 1
+neg rax
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/neg1.run   
+-74
+
+
+
+(base) kartik@Kartiks-MacBook-Pro adder % make test/neg2.run
+cargo run -- test/neg2.snek test/neg2.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/neg2.snek test/neg2.s`
+nasm -f macho64 test/neg2.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/neg2.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/neg2.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 73
+neg rax
+add rax, 1
+sub rax, 1
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/neg2.run   
+-73
+
+
+
+(base) kartik@Kartiks-MacBook-Pro adder % make test/example.run
+cargo run -- test/example.snek test/example.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.06s
+     Running `target/debug/adder test/example.snek test/example.s`
+nasm -f macho64 test/example.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/example.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/example.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 73
+add rax, 1
+neg rax
+sub rax, 1
+add rax, 1
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/example.run   
+-74
+
+(base) kartik@Kartiks-MacBook-Pro adder % make test/example1.run
+cargo run -- test/example1.snek test/example1.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/adder test/example1.snek test/example1.s`
+nasm -f macho64 test/example1.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/example1.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/example1.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 25
+add rax, 1
+neg rax
+sub rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+add rax, 1
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/example1.run 
+8
+
+
+(base) kartik@Kartiks-MacBook-Pro adder % make test/example2.run
+cargo run -- test/example2.snek test/example2.s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.06s
+     Running `target/debug/adder test/example2.snek test/example2.s`
+nasm -f macho64 test/example2.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/example2.run
+(base) kartik@Kartiks-MacBook-Pro adder % cat test/example2.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 25
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+sub rax, 1
+  ret
+(base) kartik@Kartiks-MacBook-Pro adder % ./test/example2.run   
+-12
+
